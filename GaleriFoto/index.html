@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Galeri Foto</title>
+  </head>
+  <body>
+    <!-- Judul -->
+    <h1>Galeri JavaScript</h1>
+    <!-- Menampilkan gambar -->
+    <img src="gambar/0.png" width="300" height="300" id="gambar" />
+    <br />
+    <!-- caption untuk memberi keterangan dibawah gambar -->
+    <div id="caption">jendela</div>
+    <br />
+    <!-- ini adalah pagination -->
+    <a href="#" onclick="sebelemu(nomor)">Sebelum</a>
+    <a href="#" onclick="ganti(0)">1</a>
+    <a href="#" onclick="ganti(1)">2</a>
+    <a href="#" onclick="ganti(2)">3</a>
+    <a href="#" onclick="ganti(3)">4</a>
+    <a href="#" onclick="ganti(4)">5</a>
+    <a href="#" onclick="sesudah()">Sesudah</a>
+    <!-- Akhir dari pagination -->
+
+    <script>
+      //pendeklarasian variabel
+      var nomor = 0;
+      //pendekalarasian pemanggilan berdasarkan id
+      var caption = document.getElementById("caption");
+      //pendeklarasian array
+      var text = [
+        "jendela",
+        "kapal pesiar",
+        "gunung everes",
+        "museum",
+        "gurun pasir",
+      ];
+      //membuat fungsi angka
+      function ganti(angka) {
+        //ini adalah koding bersih atau refactor
+        nomor = angka;
+        ganti_gambar(angka);
+
+        //hilangkan komentar dibawah ini dan jadikan komentar baris 43 44
+        // var lokasi = "gambar/" + angka + ".png";
+        // document.getElementById("gambar").src = lokasi;
+        // caption.innerHTML =text[angka];
+        // return false;
+      }
+      function sebelemu() {
+          //ini adalah koding bersih atau refactor
+        //aritmatika decrement
+        nomor--;
+        if (nomor < 0) nomor = 4;
+
+        //pemanggilan fungsi dalam fungsi
+        ganti_gambar(nomor);
+
+        //hilangkan komentar dibawah ini dan jadikan komentar bari 54-56
+        // nomor = nomor - 1;
+        // if (nomor < 0) {
+        //   nomor = 4;
+        // }
+        // var lokasi = "gambar/" + nomor + ".png";
+        // document.getElementById("gambar").src = lokasi;
+        // caption.innerHTML= text[nomor];
+        // return false;
+      }
+      function sesudah() {
+        nomor++;
+        if (nomor > 4) nomor = 0;
+        ganti_gambar(nomor);
+        //   if (nomor > 4 ){
+        //       nomor = 0;
+        //     }
+        // nomor = nomor + 1;
+        // var lokasi = "gambar/" + nomor + ".png";
+        // document.getElementById("gambar").src = lokasi;
+        // caption.innerHTML = text[nomor];
+        // return false;
+      }
+      function ganti_gambar(angka) {
+        var lokasi = "gambar/" + angka + ".png";
+        document.getElementById("gambar").src = lokasi;
+        caption.innerHTML = text[angka];
+        return false;
+      }
+    </script>
+  </body>
+</html>
